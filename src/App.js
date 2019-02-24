@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 export default class App extends Component {
@@ -20,6 +19,38 @@ export default class App extends Component {
     // this.handleClick = this.handleClick.bind(this);
   }
 
+  handleDragStart=(e,task)=>{
+    // console.log("Drag start");
+    e.dataTransfer.setData("id",task.name);
+    // e.target.style.opacity = "0.4";
+  }
+
+
+  handleOnDragOver=(e)=>{
+    //This makes item droppable
+    e.preventDefault();
+    // console.log("Drag over");
+    
+  } 
+  
+  handleOnDrop=(e,category)=>{
+    e.preventDefault();
+    let taskName= e.dataTransfer.getData("id");
+    let tasks= this.state.tasks.filter(task=>{
+      if(task.name===taskName)
+      task.category=category;
+      return task;
+    });
+    // console.log(taskName);
+    // console.log(category);
+    // console.log(e.target.className);
+    // console.log("Dropped");
+    // console.log(tasks);
+    // update state
+
+    this.setState({...this.state, tasks });
+    
+  }
 
   render() {
     let tasks={
@@ -30,25 +61,23 @@ export default class App extends Component {
 
     this.state.tasks.forEach(task => {
       tasks[task.category].push(
-        <div className="task" key="task.name" draggable>
+        <div className="task" key={task.name} draggable onDragStart={e=>this.handleDragStart(e,task)}>
           <p className="task-text">{task.name}</p>
         </div>
       );  
     });
 
-    console.log(tasks);
-
     return (
       <div className="App">
         <div className="credit">
           <div className="social">
-          <a href="https://linkedin.com/in/ishubhamprakash/" target="_blank">
+          <a href="https://linkedin.com/in/ishubhamprakash/" rel="noopener noreferrer" target="_blank">
           <i className="fa fa-linkedin"></i>
           </a>
-          <a href="https://github.com/i-shubhamprakash" target="_blank">
+          <a href="https://github.com/i-shubhamprakash" rel="noopener noreferrer" target="_blank">
           <i className="fa fa-github"></i>
           </a>
-          <a href="https://twitter.com/iSuvm" target="_blank">
+          <a href="https://twitter.com/iSuvm" rel="noopener noreferrer" target="_blank">
           <i className="fa fa-twitter"></i>
           </a>
           </div>
@@ -59,13 +88,13 @@ export default class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col col-12 col-md-4">
-              <Todo tasks={tasks}/>
+              <Todo tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"todo")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Doing tasks={tasks}/>
+              <Doing tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"doing")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Done tasks={tasks}/>
+              <Done tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"done")}/>
             </div>
           </div>
         </div>
@@ -77,11 +106,14 @@ export default class App extends Component {
 class Todo extends Component {
   render(){
     return(
-      <div className="task-container">
-        <p>TODO</p><hr/>
-        <div className="todo-container task-holder">
-        {this.props.tasks.todo}
-        </div>
+      <div className="task-container"
+        onDragOver={e=> this.props.handleOnDragOver(e)}
+        onDrop={e=>this.props.handleOnDrop(e)}
+      >
+          <p>TODO</p><hr/>
+          <div className="todo-container task-holder">
+            {this.props.tasks.todo}
+          </div>
       </div>
     );
   }
@@ -89,11 +121,17 @@ class Todo extends Component {
 class Doing extends Component {
   render(){
     return(
-      <div className="task-container">
-        <p>DOING</p><hr/>
-        <div className="doing-container task-holder">
-          {this.props.tasks.doing}
-        </div>
+      <div className="task-container"
+        onDragOver={e=> this.props.handleOnDragOver(e)}
+        onDrop={e=>this.props.handleOnDrop(e)}
+      >
+          <p>DOING</p><hr/>
+          <div 
+            className="doing-container task-holder" 
+            
+            >
+            {this.props.tasks.doing}
+          </div>
       </div>
     );
   }
@@ -101,11 +139,14 @@ class Doing extends Component {
 class Done extends Component {
   render(){
     return(
-      <div className="task-container">
-      <p>DONE</p><hr/>
-      <div className="done-container task-holder">
-          {this.props.tasks.done}
-      </div>
+      <div className="task-container"
+        onDragOver={e=> this.props.handleOnDragOver(e)}
+        onDrop={e=>this.props.handleOnDrop(e)}
+      >
+          <p>DONE</p><hr/>
+          <div className="done-container task-holder">
+              {this.props.tasks.done}
+          </div>
       </div>
     );
   }
