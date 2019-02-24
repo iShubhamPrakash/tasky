@@ -52,13 +52,15 @@ export default class App extends Component {
     
   }
   handleAdd=(e,category)=>{
-    let newItem= prompt("haha","tata");
+    let newItem= prompt("Add a new task...","");
     // console.log(newItem);
-    let newTasks= [...this.state.tasks,{name:newItem,category:category}];
-    // console.log(newTasks);
-    this.setState({
-      tasks: newTasks
-    });
+    if(newItem){
+        let newTasks= [...this.state.tasks,{name:newItem,category:category}];
+      // console.log(newTasks);
+      this.setState({
+        tasks: newTasks
+      });
+    }
   }
 
   render() {
