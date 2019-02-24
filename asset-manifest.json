@@ -1,14 +1,13 @@
 {
-  "main.css": "/tasky/static/css/main.c8575150.chunk.css",
-  "main.js": "/tasky/static/js/main.9165c58d.chunk.js",
-  "main.js.map": "/tasky/static/js/main.9165c58d.chunk.js.map",
+  "main.css": "/tasky/static/css/main.6ad9258f.chunk.css",
+  "main.js": "/tasky/static/js/main.e5348c58.chunk.js",
+  "main.js.map": "/tasky/static/js/main.e5348c58.chunk.js.map",
   "runtime~main.js": "/tasky/static/js/runtime~main.4a1f22d9.js",
   "runtime~main.js.map": "/tasky/static/js/runtime~main.4a1f22d9.js.map",
-  "static/js/2.5ec21d73.chunk.js": "/tasky/static/js/2.5ec21d73.chunk.js",
-  "static/js/2.5ec21d73.chunk.js.map": "/tasky/static/js/2.5ec21d73.chunk.js.map",
+  "static/js/2.5a5df9bd.chunk.js": "/tasky/static/js/2.5a5df9bd.chunk.js",
+  "static/js/2.5a5df9bd.chunk.js.map": "/tasky/static/js/2.5a5df9bd.chunk.js.map",
   "index.html": "/tasky/index.html",
-  "precache-manifest.08574dbba12e7b231cfa95206576052a.js": "/tasky/precache-manifest.08574dbba12e7b231cfa95206576052a.js",
+  "precache-manifest.6bfdb05ed07586f13df6599c8ef1c55c.js": "/tasky/precache-manifest.6bfdb05ed07586f13df6599c8ef1c55c.js",
   "service-worker.js": "/tasky/service-worker.js",
-  "static/css/main.c8575150.chunk.css.map": "/tasky/static/css/main.c8575150.chunk.css.map",
-  "static/media/logo.svg": "/tasky/static/media/logo.5d5d9eef.svg"
+  "static/css/main.6ad9258f.chunk.css.map": "/tasky/static/css/main.6ad9258f.chunk.css.map"
 }
