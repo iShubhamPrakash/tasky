@@ -13,6 +13,7 @@ export default class App extends Component {
         {name:"Learn React", category:"done"},
         {name:"Do Project", category:"doing"},
         {name:"Go to sleep", category:"todo"}
+
       ]
     };
     // This line is important!
@@ -75,7 +76,7 @@ export default class App extends Component {
         <div className="task" key={task.name} draggable onDragStart={e=>this.handleDragStart(e,task)}>
           <p className="task-text">{task.name}</p>
           <div className="task-controls">
-            {/* Add delete functionality */}
+            {/* Add delete functionality here*/}
           </div>
         </div>
       );  
@@ -132,17 +133,25 @@ export default class App extends Component {
 class Todo extends Component {
   render(){
     return(
+      
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
         onDrop={e=>this.props.handleOnDrop(e)}>
-          <p>TODO</p><hr/>
-          <div className="todo-container task-holder">
-            {this.props.tasks.todo}
+          <div className="task-top">
+            <p>TODO</p>
           </div>
-          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
-            <i className="fa fa-plus"></i>
+          <div className="task-holder">
+            <div className="todo-container">
+              {this.props.tasks.todo}
+            </div>
+          </div>
+          <div className="add-task-container">
+            <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+              <i className="fa fa-plus"></i>
+            </div>
           </div>
       </div>
+      
     );
   }
 }
@@ -152,12 +161,18 @@ class Doing extends Component {
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
         onDrop={e=>this.props.handleOnDrop(e)}>
-          <p>DOING</p><hr/>
-          <div className="doing-container task-holder">
-            {this.props.tasks.doing}
+          <div className="task-top">
+            <p>DOING</p>
           </div>
-          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
-            <i className="fa fa-plus"></i>
+          <div className="task-holder">
+            <div className="doing-container">
+              {this.props.tasks.doing}
+            </div>
+          </div>
+          <div className="add-task-container">
+            <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+              <i className="fa fa-plus"></i>
+            </div>
           </div>
       </div>
     );
@@ -169,12 +184,18 @@ class Done extends Component {
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
         onDrop={e=>this.props.handleOnDrop(e)}>
-          <p>DONE</p><hr/>
-          <div className="done-container task-holder">
-              {this.props.tasks.done}
+          <div className="task-top">
+            <p>DONE</p>
           </div>
-          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
-            <i className="fa fa-plus"></i>
+          <div className="task-holder">
+            <div className="done-container">
+                {this.props.tasks.done}
+            </div>
+          </div>
+          <div className="add-task-container">
+            <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+              <i className="fa fa-plus"></i>
+            </div>
           </div>
       </div>
     );
