@@ -51,6 +51,15 @@ export default class App extends Component {
     this.setState({...this.state, tasks });
     
   }
+  handleAdd=(e,category)=>{
+    let newItem= prompt("haha","tata");
+    // console.log(newItem);
+    let newTasks= [...this.state.tasks,{name:newItem,category:category}];
+    // console.log(newTasks);
+    this.setState({
+      tasks: newTasks
+    });
+  }
 
   render() {
     let tasks={
@@ -63,6 +72,9 @@ export default class App extends Component {
       tasks[task.category].push(
         <div className="task" key={task.name} draggable onDragStart={e=>this.handleDragStart(e,task)}>
           <p className="task-text">{task.name}</p>
+          <div className="task-controls">
+            {/* Add delete functionality */}
+          </div>
         </div>
       );  
     });
@@ -88,13 +100,25 @@ export default class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col col-12 col-md-4">
-              <Todo tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"todo")}/>
+              <Todo 
+              tasks={tasks} 
+              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              handleOnDrop={e=>this.handleOnDrop(e,"todo")}
+              handleAdd={e=>this.handleAdd(e,"todo")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Doing tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"doing")}/>
+              <Doing 
+              tasks={tasks} 
+              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              handleOnDrop={e=>this.handleOnDrop(e,"doing")}
+              handleAdd={e=>this.handleAdd(e,"doing")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Done tasks={tasks} handleOnDragOver={e=>this.handleOnDragOver(e)} handleOnDrop={e=>this.handleOnDrop(e,"done")}/>
+              <Done 
+              tasks={tasks} 
+              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              handleOnDrop={e=>this.handleOnDrop(e,"done")}
+              handleAdd={e=>this.handleAdd(e,"done")}/>
             </div>
           </div>
         </div>
@@ -108,11 +132,13 @@ class Todo extends Component {
     return(
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
-        onDrop={e=>this.props.handleOnDrop(e)}
-      >
+        onDrop={e=>this.props.handleOnDrop(e)}>
           <p>TODO</p><hr/>
           <div className="todo-container task-holder">
             {this.props.tasks.todo}
+          </div>
+          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+            <i className="fa fa-plus"></i>
           </div>
       </div>
     );
@@ -123,14 +149,13 @@ class Doing extends Component {
     return(
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
-        onDrop={e=>this.props.handleOnDrop(e)}
-      >
+        onDrop={e=>this.props.handleOnDrop(e)}>
           <p>DOING</p><hr/>
-          <div 
-            className="doing-container task-holder" 
-            
-            >
+          <div className="doing-container task-holder">
             {this.props.tasks.doing}
+          </div>
+          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+            <i className="fa fa-plus"></i>
           </div>
       </div>
     );
@@ -141,11 +166,13 @@ class Done extends Component {
     return(
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
-        onDrop={e=>this.props.handleOnDrop(e)}
-      >
+        onDrop={e=>this.props.handleOnDrop(e)}>
           <p>DONE</p><hr/>
           <div className="done-container task-holder">
               {this.props.tasks.done}
+          </div>
+          <div className="add-task" onClick={e=>{this.props.handleAdd(e)}}>
+            <i className="fa fa-plus"></i>
           </div>
       </div>
     );

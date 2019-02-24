@@ -91,3 +91,11 @@ body{
   box-shadow: 0 4px 8px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.22);
   background: rgb(225, 252, 233);
 }
+
+.add-task{
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-task:hover{
+  background: rgba(27, 27, 27, 0.144);
+}
