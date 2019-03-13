@@ -1,13 +1,13 @@
 {
   "main.css": "/tasky/static/css/main.42e4989a.chunk.css",
-  "main.js": "/tasky/static/js/main.fffdc0f4.chunk.js",
-  "main.js.map": "/tasky/static/js/main.fffdc0f4.chunk.js.map",
+  "main.js": "/tasky/static/js/main.8bf49859.chunk.js",
+  "main.js.map": "/tasky/static/js/main.8bf49859.chunk.js.map",
   "runtime~main.js": "/tasky/static/js/runtime~main.4a1f22d9.js",
   "runtime~main.js.map": "/tasky/static/js/runtime~main.4a1f22d9.js.map",
   "static/js/2.1d79853c.chunk.js": "/tasky/static/js/2.1d79853c.chunk.js",
   "static/js/2.1d79853c.chunk.js.map": "/tasky/static/js/2.1d79853c.chunk.js.map",
   "index.html": "/tasky/index.html",
-  "precache-manifest.5287ddb0b4eb4ad3b47b9ad6fce76924.js": "/tasky/precache-manifest.5287ddb0b4eb4ad3b47b9ad6fce76924.js",
+  "precache-manifest.45aa21576741f5f9406582186bbe817e.js": "/tasky/precache-manifest.45aa21576741f5f9406582186bbe817e.js",
   "service-worker.js": "/tasky/service-worker.js",
   "static/css/main.42e4989a.chunk.css.map": "/tasky/static/css/main.42e4989a.chunk.css.map"
 }
