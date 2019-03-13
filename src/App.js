@@ -19,6 +19,22 @@ export default class App extends Component {
     // this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount(){
+    console.log("Retriving notes from local storage...");
+    let storedTasks = localStorage.getItem("tasky");
+    if (storedTasks) {
+      storedTasks = JSON.parse(storedTasks);
+      this.setState({tasks: storedTasks});
+    }
+  }
+
+  componentDidUpdate(){
+    console.log("Updating the local storage...");
+    localStorage.setItem("tasky",  JSON.stringify(this.state.tasks));
+  }
+
+
+
   handleDragStart=(e,task)=>{
     // console.log("Drag start");
     e.dataTransfer.setData("id",task.name);
@@ -69,6 +85,9 @@ export default class App extends Component {
   }
 
   render() {
+
+    console.log("render...");
+    
     let tasks={
       todo:[],
       doing:[],
@@ -85,6 +104,7 @@ export default class App extends Component {
         </div>
       );
     });
+
 
     return (
       <div className="App">
