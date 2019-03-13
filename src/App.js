@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 import './App.css';
 
 export default class App extends Component {
@@ -67,15 +68,19 @@ export default class App extends Component {
 
   }
   handleAdd=(e,category)=>{
-    let newItem= prompt("Add a new task...","");
-    // console.log(newItem);
-    if(newItem){
+
+    swal("Add a new task...", {
+      content: "input",
+    })
+    .then((newItem) => {
+      if(/\S/.test(newItem)){
         let newTasks= [...this.state.tasks,{name:newItem,category:category}];
       // console.log(newTasks);
       this.setState({
         tasks: newTasks
       });
     }
+    });
   }
 
   handleDelete= (name,category)=>{
