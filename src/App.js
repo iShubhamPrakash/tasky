@@ -7,13 +7,13 @@ export default class App extends Component {
     super(props);
     this.state = {
       tasks:[
-        {name:"Go market", category:"todo"},
-        {name:"Buy food", category:"todo"},
-        {name:"Eat dinner", category:"todo"},
+        {name:"Click + to add new task", category:"todo"},
+        {name:"Drag task item to other categories", category:"todo"},
+        {name:"Click cross to delete task", category:"todo"},
         {name:"code", category:"doing"},
-        {name:"Learn React", category:"done"},
+        {name:"Task is saved locally", category:"done"},
         {name:"Do Project", category:"doing"},
-        {name:"Go to sleep", category:"todo"},
+        {name:"Say hi to developer at top right", category:"todo"},
       ]
     };
     // This line is important!
