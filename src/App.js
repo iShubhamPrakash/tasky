@@ -12,8 +12,7 @@ export default class App extends Component {
         {name:"code", category:"doing"},
         {name:"Learn React", category:"done"},
         {name:"Do Project", category:"doing"},
-        {name:"Go to sleep", category:"todo"}
-
+        {name:"Go to sleep", category:"todo"},
       ]
     };
     // This line is important!
@@ -31,9 +30,9 @@ export default class App extends Component {
     //This makes item droppable
     e.preventDefault();
     // console.log("Drag over");
-    
-  } 
-  
+
+  }
+
   handleOnDrop=(e,category)=>{
     e.preventDefault();
     let taskName= e.dataTransfer.getData("id");
@@ -50,7 +49,7 @@ export default class App extends Component {
     // update state
 
     this.setState({...this.state, tasks });
-    
+
   }
   handleAdd=(e,category)=>{
     let newItem= prompt("Add a new task...","");
@@ -64,6 +63,12 @@ export default class App extends Component {
     }
   }
 
+  handleDelete= (name,category)=>{
+    // console.log(name, category);
+    let newTasks= this.state.tasks.filter(task=> task.name !== name);
+    this.setState({tasks: newTasks});
+  }
+
   render() {
     let tasks={
       todo:[],
@@ -75,11 +80,11 @@ export default class App extends Component {
       tasks[task.category].push(
         <div className="task" key={task.name} draggable onDragStart={e=>this.handleDragStart(e,task)}>
           <p className="task-text">{task.name}</p>
-          <div className="task-controls">
-            {/* Add delete functionality here*/}
-          </div>
+          <span className="task-controls" onClick={()=>this.handleDelete(task.name,task.category)}>
+            <i className="fa fa-plus"/>
+          </span>
         </div>
-      );  
+      );
     });
 
     return (
@@ -103,23 +108,23 @@ export default class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col col-12 col-md-4">
-              <Todo 
-              tasks={tasks} 
-              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              <Todo
+              tasks={tasks}
+              handleOnDragOver={e=>this.handleOnDragOver(e)}
               handleOnDrop={e=>this.handleOnDrop(e,"todo")}
               handleAdd={e=>this.handleAdd(e,"todo")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Doing 
-              tasks={tasks} 
-              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              <Doing
+              tasks={tasks}
+              handleOnDragOver={e=>this.handleOnDragOver(e)}
               handleOnDrop={e=>this.handleOnDrop(e,"doing")}
               handleAdd={e=>this.handleAdd(e,"doing")}/>
             </div>
             <div className="col col-12 col-md-4">
-              <Done 
-              tasks={tasks} 
-              handleOnDragOver={e=>this.handleOnDragOver(e)} 
+              <Done
+              tasks={tasks}
+              handleOnDragOver={e=>this.handleOnDragOver(e)}
               handleOnDrop={e=>this.handleOnDrop(e,"done")}
               handleAdd={e=>this.handleAdd(e,"done")}/>
             </div>
@@ -133,7 +138,7 @@ export default class App extends Component {
 class Todo extends Component {
   render(){
     return(
-      
+
       <div className="task-container"
         onDragOver={e=> this.props.handleOnDragOver(e)}
         onDrop={e=>this.props.handleOnDrop(e)}>
@@ -151,7 +156,7 @@ class Todo extends Component {
             </div>
           </div>
       </div>
-      
+
     );
   }
 }
