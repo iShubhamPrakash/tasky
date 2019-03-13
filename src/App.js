@@ -22,7 +22,6 @@ export default class App extends Component {
   handleDragStart=(e,task)=>{
     // console.log("Drag start");
     e.dataTransfer.setData("id",task.name);
-    // e.target.style.opacity = "0.4";
   }
 
 

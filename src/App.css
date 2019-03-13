@@ -67,6 +67,12 @@ body{
   background: rgba(27, 27, 27, 0.144);
 }
 
+.task:active{
+  color: #fff;
+  background: blue;
+  box-shadow: none;
+}
+
 .add-task{
   height: 24px;
   border-radius: 4px;
